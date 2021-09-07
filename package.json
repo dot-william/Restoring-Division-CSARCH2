@@ -1,0 +1,25 @@
+{
+  "name": "restoring-division-csarch2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dot-william/Restoring-Division-CSARCH2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dot-william/Restoring-Division-CSARCH2/issues"
+  },
+  "homepage": "https://github.com/dot-william/Restoring-Division-CSARCH2#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
