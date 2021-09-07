@@ -1,38 +1,6 @@
 /* Homepage CSS */
 
-#foodpanda {
-    width: 300px;
-    height: 130px;
-    zoom: 50%;
-    background: url("../img/home/grab-panda.png") 0 0;
-}
 
-#foodpanda-button:hover {
-    background-color: #df3c9b;
-}
-
-#foodpanda-button:hover span {    
-    background: url("../img/home/grab-panda.png") 0 -260px;
-}
-
-#grab {
-    width: 300px;
-    height: 130px;
-    zoom: 50%;
-    background: url("../img/home/grab-panda.png") 0 -130px;
-}
-
-#grab-button:hover span{
-    background: url("../img/home/grab-panda.png") 0 -390px;
-}
-
-#grab-button:hover {
-    background-color: #00af00;
-}
-
-#foodpanda-button, #grab-button {
-    border-width: 3px;
-}
 
 hr {
     display: block;
@@ -78,26 +46,3 @@ a.custom-anchor:hover, h1.custom-h1:hover{
     color: rgba(0,99,65,1);
 }
 
-.custom-breaker{
-    display: block;
-    margin: 1rem 0rem 0rem;
-    border-style: none;
-    border-width: 1px;
-    height: 0.2rem;
-}
-
-#breaker-bin{
-    background-color: rgba(0,99,65,1);
-}
-
-#breaker-hs{
-    background-color: rgb(255, 145, 1);
-}
-
-#breaker-pancit{
-    background-color: rgb(201, 23, 0);
-}
-
-#breaker-drinks{
-    background-color: rgb(2, 0, 99);
-}
