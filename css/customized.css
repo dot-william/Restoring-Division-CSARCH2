@@ -1,7 +1,5 @@
 /* Homepage CSS */
 
-
-
 hr {
     display: block;
     margin: 2em;
@@ -45,4 +43,3 @@ a.custom-anchor:hover, h1.custom-h1:hover{
     font-size: larger;
     color: rgba(0,99,65,1);
 }
-
