@@ -52,7 +52,13 @@ var Q = "0111";
 var M = "0011";
 var A = "0";
 
-M = "0" + M;
+if (Q.length >= M.length){
+    QMlen = Q.length - M.length + 1;
+
+    for (let i = 0; i < QMlen; i++) {
+        M = "0" + M;        
+    }
+} 
 
 for (let i = 0; i < Q.length; i++) {
     A = A + "0";
