@@ -14,7 +14,7 @@
 	<!-- Javascript Links-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-	<script src="../js/main.js"></script>
+	<script src="../js/algorithm.js"></script>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 				<div class="field">
 					<label class="label">Dividend (Q)</label>
 					<div class="control has-icons-left">
-					  <input class="input mb-3" type="text" placeholder="Numerator in Binary">
+					  <input class="input mb-3" type="text" inputmode="numeric" pattern="[0-1]*" placeholder="Numerator in Binary">
 					  <span class="icon is-small is-left">
 						<i class="fas fa-divide"></i>
 					  </span>
@@ -47,7 +47,7 @@
                 <div class="field">
 					<label class="label">Divisor (M)</label>
 					<div class="control has-icons-left">
-					  <input class="input mb-3" type="text" placeholder="Denominator in Binary">
+					  <input class="input mb-3" type="text" inputmode="numeric" pattern="[0-1]*" placeholder="Denominator in Binary">
 					  <span class="icon is-small is-left">
 						<i class="fas fa-divide"></i>
 					  </span>
