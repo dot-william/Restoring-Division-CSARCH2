@@ -6,7 +6,7 @@ $(document).ready(function () {
   //NOTE: Did not include M and -M (initialization) so we can use for step-by-step in case
   function displaySolution(tA, tQ, sAM, pA, pQ, pass) {
     $("#formCont").append(
-      `<div>
+      `<div id="solDiv">
   <h1>Pass number: ${pass} </h1>
  <div=container> 
   <div class="row">
