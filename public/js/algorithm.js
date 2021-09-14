@@ -1,3 +1,5 @@
+/* FUNCTIONS */
+
 function findTwoscomplement(str) {
     var n = str.length;
 
@@ -41,11 +43,10 @@ const addBinary = (str1, str2) => {
        res.push((a + b + carry) % 2);
        carry = 1 < a + b + carry;
     };
-    if (carry){
-       res.push(1);
-    }
     return res.reverse().join('');
- };
+};
+
+/* START OF RESTORING DIVISION CODE */
 
 var Q = "0111";
 var M = "0011";
@@ -57,23 +58,48 @@ for (let i = 0; i < Q.length; i++) {
     A = A + "0";
 }
 
-A = A + Q;
+var AQ = A + Q;
 
 var negM = findTwoscomplement(M);
 
-// START LOOP HERE FOR STEP BY STEP ------ ///
-var temp = leftShifting(A, 1);
-temp = temp.slice(0, -1);
+console.log('-M : ' + negM);
+console.log(' A : ' + A + '\t' + ' Q : ' + Q);
+console.log(' M : ' + M + '\n\n');
 
-//console.log(temp);
+/* START LOOP HERE FOR STEP BY STEP */
+for (let i = 1; i <= Q.length; i++) {
+    tempAQ = leftShifting(AQ, 1);
+    tempAQ = tempAQ.slice(0, -1);  
 
-A = "00001"
-var B = addBinary(A, negM);
-var Msb = B.charAt(0);
+    tempA = tempAQ.slice(0, M.length);
+    tempQ = ""
 
-if (Msb == 1){    
-    temp = temp + 'a';
+    for (let j = tempA.length; j < tempAQ.length; j++) {
+        tempQ = tempQ + tempAQ.charAt(j);
+    }
+
+    console.log(' A : ' + tempA + '\t' + ' Q : ' + tempQ);
+
+    subAM = addBinary(tempA, negM);
+    console.log(' A : ' + subAM);
+
+    Msb = subAM.charAt(0)
+
+    if (Msb == 0){      // if its positive
+        tempA = subAM;
+        tempAQ = subAM + tempQ + '1';
+    } else {
+        tempAQ = tempAQ + '0';
+    }
+
+    AQ = tempAQ
+    
+    passA = AQ.slice(0, M.length);
+    passQ = ""
+
+    for (let k = passA.length; k < AQ.length; k++) {
+        passQ = passQ + AQ.charAt(k);
+    }
+
+    console.log(' A : ' + passA + '\t' + ' Q : ' + passQ + '\n');
 }
-
-console.log(temp);
-
