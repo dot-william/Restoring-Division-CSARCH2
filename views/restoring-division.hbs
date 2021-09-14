@@ -1,99 +1,111 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>CSARCH2 G5| Restoring Division</title>
+  <head>
+    <title>CSARCH2 G5| Restoring Division</title>
 
-	<!-- Meta Data -->
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Meta Data -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<!-- CSS Links -->
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<link rel="stylesheet" type="text/css" href="/css/customized.css">
+    <!-- CSS Links -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/customized.css" />
 
-	<!-- Javascript Links-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- Javascript Links-->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
 
-	<script src="/js/algorithm.js"></script>
+    <script src="/js/algorithm.js"></script>
 
-</head>
-<body>
-<div class="container-js">
-	<hr id="navtop">
+  </head>
+  <body>
+    <div class="container-js">
+      <hr id="navtop" />
 
-	
-	<!-- Section Header -->
-	<section class="hero is-small">
-		<div class="hero-body has-text-centered mt-5">
-			<p class="hero-styling">Restoring Division Algorithm</p>
-		</div>
-	</section>
-
-	<!-- Login Form -->
-	<div class="task-container columns is-multiline mt-2 mb-5">
-        <div class="card column is-half is-offset-one-quarter">
-            <form class="p-5">
-
-				<div class="field">
-					<label class="label">Dividend (Q)</label>
-					<div class="control has-icons-left">
-					  <input id="dividend" class="input mb-3" type="text" onkeypress="return validateNumber(event)" placeholder="Numerator in Binary">
-					  <span class="icon is-small is-left">
-						<i class="fas fa-divide"></i>
-					  </span>
-					</div>
-				</div>
-                
-                <div class="field">
-					<label class="label">Divisor (M)</label>
-					<div class="control has-icons-left">
-					  <input  id="divisor" class="input mb-3" type="text" onkeypress="return validateNumber(event)" placeholder="Denominator in Binary">
-					  <span class="icon is-small is-left">
-						<i class="fas fa-divide"></i>
-					  </span>
-					</div>
-				</div>
-						  
-				<div class="buttons is-centered is-grouped mt-5">
-					<div class="control">
-						<button class="button is-success">
-							<a href="#">Show Step-by-Step</a>							
-					    </button>
-					</div>
-                    <div class="control">
-						<button class="button is-warning" id="show-all">
-							<a href="#">Show All</a>							
-					    </button>
-					</div>
-                    <div class="control">
-						<button class="button is-info">
-							<a href="#">Download Text File</a>							
-					    </button>
-					</div>
-				</div>
-
-			</form>			
+      <!-- Section Header -->
+      <section class="hero is-small">
+        <div class="hero-body has-text-centered mt-5">
+          <p class="hero-styling">Restoring Division Algorithm</p>
         </div>
+      </section>
+
+      <!-- Login Form -->
+      <div class="task-container columns is-multiline mt-2 mb-5">
+        <div id="formCont" class="card column is-half is-offset-one-quarter">
+          <form class="p-5">
+
+            <div class="field">
+              <label class="label">Dividend (Q)</label>
+              <div class="control has-icons-left">
+                <input
+                  id="dividend"
+                  class="input mb-3"
+                  type="text"
+                  onkeypress="return validateNumber(event)"
+                  placeholder="Numerator in Binary"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-divide"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Divisor (M)</label>
+              <div class="control has-icons-left">
+                <input
+                  id="divisor"
+                  class="input mb-3"
+                  type="text"
+                  onkeypress="return validateNumber(event)"
+                  placeholder="Denominator in Binary"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-divide"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="buttons is-centered is-grouped mt-5">
+              <div class="control">
+                <button class="button is-success">
+                  <a href="#">Show Step-by-Step</a>
+                </button>
+              </div>
+              <div class="control">
+                <button class="button is-warning" id="show-all">
+                  <a href="#">Show All</a>
+                </button>
+              </div>
+              <div class="control">
+                <button class="button is-info">
+                  <a href="#">Download Text File</a>
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="has-text-centered pt-5 mb-5">
+        <p>Computer Architecture 2</p>
+        <br />
+        <p>Abendaño, Dimaculangan, Polinga, Tendido</p>
+      </footer>
+
+      <!-- Script -->
+      <script>
+        function validateNumber(e) { const pattern = /^[0-1]$/; return
+        pattern.test(e.key ) }
+      </script>
     </div>
-	
-	<!-- Footer -->
-	<footer class="has-text-centered pt-5 mb-5">
-		<p>Computer Architecture 2</p>
-		<br>
-		<p>Abendaño, Dimaculangan, Polinga, Tendido</p>
-	</footer>
 
-
-	<!-- Script -->
-	<script>
-		function validateNumber(e) {
-            const pattern = /^[0-1]$/;
-            return pattern.test(e.key )
-    	}
-	</script>
-</div>
-
-</body>
+  </body>
 </html>
