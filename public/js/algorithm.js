@@ -31,6 +31,22 @@ function leftShifting(s, leftShifts) {
     return s.substring(leftShifts) + s.substring(0, leftShifts);
 }
 
+const addBinary = (str1, str2) => {
+    let carry = 0;
+    const res = [];
+    let l1 = str1.length, l2 = str2.length;
+    for (let i = l1 - 1, j = l2 - 1; 0 <= i || 0 <= j; --i, --j) {
+       let a = 0 <= i ? Number(str1[i]) : 0,
+       b = 0 <= j ? Number(str2[j]) : 0;
+       res.push((a + b + carry) % 2);
+       carry = 1 < a + b + carry;
+    };
+    if (carry){
+       res.push(1);
+    }
+    return res.reverse().join('');
+ };
+
 var Q = "0111";
 var M = "0011";
 var A = "0";
@@ -44,6 +60,20 @@ for (let i = 0; i < Q.length; i++) {
 A = A + Q;
 
 var negM = findTwoscomplement(M);
+
+// START LOOP HERE FOR STEP BY STEP ------ ///
 var temp = leftShifting(A, 1);
+temp = temp.slice(0, -1);
+
+//console.log(temp);
+
+A = "00001"
+var B = addBinary(A, negM);
+var Msb = B.charAt(0);
+
+if (Msb == 1){    
+    temp = temp + 'a';
+}
+
 console.log(temp);
 
