@@ -4,23 +4,23 @@ $(document).ready(function () {
   /* FUNCTIONS */
 
   //NOTE: Did not include M and -M (initialization) so we can use for step-by-step in case
-  function displaySolution(tA, tQ, sAM, pA, pQ, pass) {
-    $("#formCont").append(
-      `<div id="solDiv">
-  <h1>Pass number: ${pass} </h1>
- <div=container> 
-  <div class="row">
-    <div class="col-sm-4" style="background-color:lavender;"> A: ${tA}</div>
-    <div class="col-sm-4" style="background-color:lavenderblush;"> Q : ${tQ}</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4" style="background-color:lavenderblush;"> A : ${sAM}</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4" style="background-color:lavender;"> A : ${pA}</div>
-    <div class="col-sm-4" style="background-color:lavenderblush;"> Q : ${pQ}</div>
-  </div>
-</div=container>`
+  function displayPass(tA, tQ, sAM, pA, pQ, pass) {
+    $("#solDiv").append(
+      `<div class=container-fluid>
+      <h1>Pass number: ${pass} </h1> 
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> A: ${tA}</div>
+        <div class="col-sm-6" style="background-color:lavenderblush;"> Q : ${tQ}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavenderblush;"> A : ${sAM}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> A : ${pA}</div>
+        <div class="col-sm-6" style="background-color:lavenderblush;"> Q : ${pQ}</div>
+      </div>
+
+    </div>`
     );
   }
 
@@ -69,6 +69,11 @@ $(document).ready(function () {
 
   $("#show-all").click(function () {
     alert("CLICK SUCCESSFUL BUTTON");
+    $("#solDiv").remove(); //clear previous solution
+
+    // Append div containing the solution
+    $("#formCont").append(`<div id="solDiv" class=container-fluid>  
+    </div>`);
 
     /* START OF RESTORING DIVISION CODE */
 
@@ -96,20 +101,20 @@ $(document).ready(function () {
     console.log(" A : " + A + "\t" + " Q : " + Q);
     console.log(" M : " + M + "\n\n");
 
-    $("#formCont").append(
-      `<div>
-  <h1>Initialize:</h1>
- <div=container> 
-  <div class="row">
-    <div class="col-sm-4" style="background-color:lavender;"> -M: ${negM}</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4" style="background-color:lavender;"> A : ${A}</div>
-    <div class="col-sm-4" style="background-color:lavender;"> Q : ${Q}</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4" style="background-color:lavender;"> M : ${M}</div>
-  </div>`
+    //Append initialization step on solDiv
+    $("#solDiv").append(
+      `<div class=container-fluid>
+      <h1>Initialize:</h1>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
+        <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
+      </div>`
     );
 
     /* START LOOP HERE FOR STEP BY STEP */
@@ -124,7 +129,11 @@ $(document).ready(function () {
         tempQ = tempQ + tempAQ.charAt(j);
       }
 
-      console.log(" A : " + tempA + "\t" + " Q : " + tempQ);
+      console.log(
+        " A : " + tempA + "\t" + " Q : " + tempQ + "\t" + "Pass: " + i
+      );
+
+      var dispA = tempA; //for output
 
       subAM = addBinary(tempA, negM);
       console.log(" A : " + subAM);
@@ -149,7 +158,9 @@ $(document).ready(function () {
       }
 
       console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
-      displaySolution(tempA, tempQ, subAM, passA, passQ, i);
+      displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
+      $("#dividend").val(""); //clear input field
+      $("#divisor").val("");
     }
   });
 });
