@@ -9,7 +9,7 @@ $(document).ready(function () {
       `<div class="container-fluid px-5">
       <label class="label">Pass Number: ${pass}</label>    
       
-      <div style="background-color:whitesmoke;">   
+      <div class="p-1" style="background-color:whitesmoke;">   
         <div class="columns m-2">
           <div class="column m-0 p-0"> A : ${tA} </div>
           <div class="column m-0 p-0"> Q : ${tQ} </div>
@@ -115,7 +115,7 @@ $(document).ready(function () {
         `<div class="container-fluid px-5">
         <label class="label">Initialization</label>   
          
-        <div style="background-color:whitesmoke;">   
+        <div class="p-1" style="background-color:whitesmoke;">   
           <div class="columns m-2">         
             <div class="column m-0 p-0"> -M: ${negM} </div>
           </div>
@@ -223,7 +223,7 @@ $(document).ready(function () {
         `<div class="container-fluid px-5">
         <label class="label">Initialization</label>   
          
-        <div style="background-color:whitesmoke;">   
+        <div class="p-1" style="background-color:whitesmoke;">   
           <div class="columns m-2">         
             <div class="column m-0 p-0"> -M: ${negM} </div>
           </div>
