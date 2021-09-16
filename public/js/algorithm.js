@@ -8,7 +8,7 @@ $(document).ready(function () {
     $("#solDiv").append(
       `<div class=container-fluid>
       <label class="label">Pass Number: ${pass}</label>    
-      <div class="p-1" style="background-color:lavender;">   
+      <div class="p-1" style="background-color:whitesmoke;">   
         <div class="columns m-2">
           <div class="column m-0 p-0"> A : ${tA} </div>
           <div class="column m-0 p-0"> Q : ${tQ} </div>
@@ -111,7 +111,7 @@ $(document).ready(function () {
       `<div class=container-fluid>
         <label class="label">Initialization</label>     
         
-        <div class="p-1" style="background-color:lavender;">        
+        <div class="p-1" style="background-color:whitesmoke;">        
           <div class="columns m-2">         
             <div class="column m-0 p-0"> -M : ${negM} </div>
           </div>
@@ -215,7 +215,7 @@ $(document).ready(function () {
       `<div class=container-fluid>
         <label class="label">Initialization</label>     
         
-        <div class="p-1" style="background-color:lavender;">        
+        <div class="p-1" style="background-color:whitesmoke;">        
           <div class="columns m-2">         
             <div class="column m-0 p-0"> -M : ${negM} </div>
           </div>
@@ -234,7 +234,7 @@ $(document).ready(function () {
     );
 
     var btn = document.createElement("BUTTON");
-    btn.className = `next-button`;
+    btn.className = `button is-link has-text-centered mb-5`;
     btn.id = `nextBtnID`;
     btn.innerHTML = "Next step";
     $("#solDiv").append(btn);
