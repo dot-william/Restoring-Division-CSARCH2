@@ -7,20 +7,26 @@ $(document).ready(function () {
   function displayPass(tA, tQ, sAM, pA, pQ, pass) {
     $("#solDiv").append(
       `<div class=container-fluid>
-      <h1>Pass number: ${pass} </h1> 
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> A: ${tA}</div>
-        <div class="col-sm-6" style="background-color:lavenderblush;"> Q : ${tQ}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavenderblush;"> A : ${sAM}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> A : ${pA}</div>
-        <div class="col-sm-6" style="background-color:lavenderblush;"> Q : ${pQ}</div>
-      </div>
+      <label class="label">Pass Number: ${pass}</label>    
+      <div class="p-1" style="background-color:lavender;">   
+        <div class="columns m-2">
+          <div class="column m-0 p-0"> A : ${tA} </div>
+          <div class="column m-0 p-0"> Q : ${tQ} </div>
+        </div>
 
-    </div>`
+        <div class="columns m-2">         
+          <div class="column m-0 p-0"> 
+            <p style="color: red;"> A : ${sAM} </p>
+          </div>
+        </div>
+
+        <div class="columns m-2">
+          <div class="column m-0 p-0"> A : ${pA} </div>
+          <div class="column m-0 p-0"> Q : ${pQ} </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5"></div>`
     );
   }
 
@@ -68,7 +74,6 @@ $(document).ready(function () {
   };
 
   $("#show-all").click(function () {
-    alert("CLICK SUCCESSFUL BUTTON");
     $("#solDiv").remove(); //clear previous solution
 
     // Append div containing the solution
@@ -104,17 +109,24 @@ $(document).ready(function () {
     //Append initialization step on solDiv
     $("#solDiv").append(
       `<div class=container-fluid>
-      <h1>Initialize:</h1>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
-        <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
-      </div>`
+        <label class="label">Initialization</label>     
+        
+        <div class="p-1" style="background-color:lavender;">        
+          <div class="columns m-2">         
+            <div class="column m-0 p-0"> -M : ${negM} </div>
+          </div>
+
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> A : ${A} </div>
+            <div class="column m-0 p-0"> Q : ${Q} </div>
+          </div>
+
+          <div class="columns m-2">         
+            <div class="column m-0 p-0"> M : ${M} </div>
+          </div>
+        </div>
+        
+        <div class="mb-5"></div>`
     );
 
     /* START LOOP HERE FOR STEP BY STEP */
@@ -166,7 +178,6 @@ $(document).ready(function () {
 
   /*******************    STEP-BY-STEP     *********************/
   $("#show-step").click(function () {
-    alert("CLICK SUCCESSFUL BUTTON");
     $("#solDiv").remove(); //clear previous solution
 
     // Append div containing the solution
@@ -202,17 +213,24 @@ $(document).ready(function () {
     //Append initialization step on solDiv
     $("#solDiv").append(
       `<div class=container-fluid>
-      <h1>Initialize:</h1>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
-        <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
-      </div>`
+        <label class="label">Initialization</label>     
+        
+        <div class="p-1" style="background-color:lavender;">        
+          <div class="columns m-2">         
+            <div class="column m-0 p-0"> -M : ${negM} </div>
+          </div>
+
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> A : ${A} </div>
+            <div class="column m-0 p-0"> Q : ${Q} </div>
+          </div>
+
+          <div class="columns m-2">         
+            <div class="column m-0 p-0"> M : ${M} </div>
+          </div>
+        </div>
+        
+        <div class="mb-5"></div>`
     );
 
     var btn = document.createElement("BUTTON");
