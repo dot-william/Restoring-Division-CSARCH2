@@ -23,7 +23,6 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine)
 app.set('view engine', '.hbs')
 
-
 // Default home page
 app.get('/', function(req, res) {
     res.render('restoring-division', {
@@ -31,26 +30,10 @@ app.get('/', function(req, res) {
     });
 });
 
-// When user requests to go to step-by-step page 
-app.get('/step-by-step', function(req, res) {
-    console.log("this should appear");
-    res.render('step-by-step', {
-        layout:false
-    });
-});
-
-// When user requests for the home page
-app.get('/home', function(req, res) {
-    console.log("someone pressed home");
-    res.redirect('/'); //redirect to home page
-});
-
-
 //When user requests for  page that doesn't exist
 app.use(function(req, res) {
     res.status(404).send("Invalid access, please return back to the home page");
 });
-
 
 app.listen(port, hostname, function() {
     console.log("Server running at: ");
