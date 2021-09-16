@@ -74,177 +74,60 @@ $(document).ready(function () {
   };
 
   $("#show-all").click(function () {
-    $("#solDiv").remove(); //clear previous solution
+      
+      $("#solDiv").remove(); //clear previous solution
 
-    // Append div containing the solution
-    $("#formCont").append(`<div id="solDiv" class=container-fluid>  
-    </div>`);
+      // Append div containing the solution
+      $("#formCont").append(`<div id="solDiv" class=container-fluid>  
+      </div>`);
 
-    /* START OF RESTORING DIVISION CODE */
+      /* START OF RESTORING DIVISION CODE */
 
-    var Q = $("#dividend").val();
-    var M = $("#divisor").val();
-    var A = "0";
+      var Q = $("#dividend").val();
+      var M = $("#divisor").val();
+      var A = "0";
 
-    if (Q.length >= M.length) {
-      QMlen = Q.length - M.length + 1;
+    if(Q === "" || M === "") {
+      alert("Please enter all the fields.");
+    } else {
+      if (Q.length >= M.length) {
+        QMlen = Q.length - M.length + 1;
 
-      for (let i = 0; i < QMlen; i++) {
-        M = "0" + M;
+        for (let i = 0; i < QMlen; i++) {
+          M = "0" + M;
+        }
       }
-    }
 
-    for (let i = 0; i < Q.length; i++) {
-      A = A + "0";
-    }
+      for (let i = 0; i < Q.length; i++) {
+        A = A + "0";
+      }
 
-    var AQ = A + Q;
+      var AQ = A + Q;
 
-    var negM = findTwoscomplement(M);
+      var negM = findTwoscomplement(M);
 
-    console.log("-M : " + negM);
-    console.log(" A : " + A + "\t" + " Q : " + Q);
-    console.log(" M : " + M + "\n\n");
+      console.log("-M : " + negM);
+      console.log(" A : " + A + "\t" + " Q : " + Q);
+      console.log(" M : " + M + "\n\n");
 
-    //Append initialization step on solDiv
-    $("#solDiv").append(
-      `<div class=container-fluid>
-        <label class="label">Initialization</label>     
-        
-        <div class="p-1" style="background-color:whitesmoke;">        
-          <div class="columns m-2">         
-            <div class="column m-0 p-0"> -M : ${negM} </div>
-          </div>
-
-          <div class="columns m-2">
-            <div class="column m-0 p-0"> A : ${A} </div>
-            <div class="column m-0 p-0"> Q : ${Q} </div>
-          </div>
-
-          <div class="columns m-2">         
-            <div class="column m-0 p-0"> M : ${M} </div>
-          </div>
+      //Append initialization step on solDiv
+      $("#solDiv").append(
+        `<div class=container-fluid>
+        <h1>Initialize:</h1>
+        <div class="row">
+          <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
         </div>
-        
-        <div class="mb-5"></div>`
-    );
-
-    /* START LOOP HERE FOR STEP BY STEP */
-    for (let i = 1; i <= Q.length; i++) {
-      tempAQ = leftShifting(AQ, 1);
-      tempAQ = tempAQ.slice(0, -1);
-
-      tempA = tempAQ.slice(0, M.length);
-      tempQ = "";
-
-      for (let j = tempA.length; j < tempAQ.length; j++) {
-        tempQ = tempQ + tempAQ.charAt(j);
-      }
-
-      console.log(
-        " A : " + tempA + "\t" + " Q : " + tempQ + "\t" + "Pass: " + i
+        <div class="row">
+          <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
+          <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
+        </div>`
       );
 
-      var dispA = tempA; //for output
-
-      subAM = addBinary(tempA, negM);
-      console.log(" A : " + subAM);
-
-      Msb = subAM.charAt(0);
-
-      if (Msb == 0) {
-        // if its positive
-        tempA = subAM;
-        tempAQ = subAM + tempQ + "1";
-      } else {
-        tempAQ = tempAQ + "0";
-      }
-
-      AQ = tempAQ;
-
-      passA = AQ.slice(0, M.length);
-      passQ = "";
-
-      for (let k = passA.length; k < AQ.length; k++) {
-        passQ = passQ + AQ.charAt(k);
-      }
-
-      console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
-      displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
-      $("#dividend").val(""); //clear input field
-      $("#divisor").val("");
-    }
-  });
-
-  /*******************    STEP-BY-STEP     *********************/
-  $("#show-step").click(function () {
-    $("#solDiv").remove(); //clear previous solution
-
-    // Append div containing the solution
-    $("#formCont").append(`<div id="solDiv" class=container-fluid>  
-    </div>`);
-
-    /* START OF RESTORING DIVISION CODE */
-
-    var Q = $("#dividend").val();
-    var M = $("#divisor").val();
-    var A = "0";
-
-    if (Q.length >= M.length) {
-      QMlen = Q.length - M.length + 1;
-
-      for (let i = 0; i < QMlen; i++) {
-        M = "0" + M;
-      }
-    }
-
-    for (let i = 0; i < Q.length; i++) {
-      A = A + "0";
-    }
-
-    var AQ = A + Q;
-
-    var negM = findTwoscomplement(M);
-
-    console.log("-M : " + negM);
-    console.log(" A : " + A + "\t" + " Q : " + Q);
-    console.log(" M : " + M + "\n\n");
-
-    //Append initialization step on solDiv
-    $("#solDiv").append(
-      `<div class=container-fluid>
-        <label class="label">Initialization</label>     
-        
-        <div class="p-1" style="background-color:whitesmoke;">        
-          <div class="columns m-2">         
-            <div class="column m-0 p-0"> -M : ${negM} </div>
-          </div>
-
-          <div class="columns m-2">
-            <div class="column m-0 p-0"> A : ${A} </div>
-            <div class="column m-0 p-0"> Q : ${Q} </div>
-          </div>
-
-          <div class="columns m-2">         
-            <div class="column m-0 p-0"> M : ${M} </div>
-          </div>
-        </div>
-        
-        <div class="mb-5"></div>`
-    );
-
-    var btn = document.createElement("BUTTON");
-    btn.className = `button is-link has-text-centered mb-5`;
-    btn.id = `nextBtnID`;
-    btn.innerHTML = "Next step";
-    $("#solDiv").append(btn);
-    document.getElementById("nextBtnID").disabled = false;
-    var clickCtr = 1;
-
-    $("#nextBtnID").click(function () {
       /* START LOOP HERE FOR STEP BY STEP */
-      if (clickCtr <= Q.length) {
-        i = clickCtr;
+      for (let i = 1; i <= Q.length; i++) {
         tempAQ = leftShifting(AQ, 1);
         tempAQ = tempAQ.slice(0, -1);
 
@@ -284,17 +167,246 @@ $(document).ready(function () {
         }
 
         console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
-
         displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
-        $("#dividend").val(""); //clear input fields
+        $("#dividend").val(""); //clear input field
         $("#divisor").val("");
-        clickCtr++;
-        if (clickCtr == Q.length + 1) {
-          document.getElementById("nextBtnID").disabled = true; // disable button after displaying last step
-        }
-      } else {
-        document.getElementById("nextBtnID").disabled = true;
       }
-    });
+    }
+     
   });
+
+  /*******************    STEP-BY-STEP     *********************/
+  $("#show-step").click(function () {
+    $("#solDiv").remove(); //clear previous solution
+
+    // Append div containing the solution
+    $("#formCont").append(`<div id="solDiv" class=container-fluid>  
+    </div>`);
+
+    /* START OF RESTORING DIVISION CODE */
+
+    var Q = $("#dividend").val();
+    var M = $("#divisor").val();
+    var A = "0";
+
+    if(Q === "" || M === "") {
+       alert("Please enter all the fields.");
+
+    } else {
+
+      if (Q.length >= M.length) {
+        QMlen = Q.length - M.length + 1;
+  
+        for (let i = 0; i < QMlen; i++) {
+          M = "0" + M;
+        }
+      }
+  
+      for (let i = 0; i < Q.length; i++) {
+        A = A + "0";
+      }
+  
+      var AQ = A + Q;
+  
+      var negM = findTwoscomplement(M);
+  
+      console.log("-M : " + negM);
+      console.log(" A : " + A + "\t" + " Q : " + Q);
+      console.log(" M : " + M + "\n\n");
+  
+      //Append initialization step on solDiv
+      $("#solDiv").append(
+        `<div class=container-fluid>
+        <h1>Initialize:</h1>
+        <div class="row">
+          <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
+          <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
+        </div>`
+      );
+  
+      var btn = document.createElement("BUTTON");
+      btn.className = `next-button`;
+      btn.id = `nextBtnID`;
+      btn.innerHTML = "Next step";
+      $("#solDiv").append(btn);
+      document.getElementById("nextBtnID").disabled = false;
+      var clickCtr = 1;
+  
+      $("#nextBtnID").click(function () {
+        /* START LOOP HERE FOR STEP BY STEP */
+        if (clickCtr <= Q.length) {
+          i = clickCtr;
+          //while (i <= Q.length) {
+          tempAQ = leftShifting(AQ, 1);
+          tempAQ = tempAQ.slice(0, -1);
+  
+          tempA = tempAQ.slice(0, M.length);
+          tempQ = "";
+  
+          for (let j = tempA.length; j < tempAQ.length; j++) {
+            tempQ = tempQ + tempAQ.charAt(j);
+          }
+  
+          console.log(
+            " A : " + tempA + "\t" + " Q : " + tempQ + "\t" + "Pass: " + i
+          );
+  
+          var dispA = tempA; //for output
+  
+          subAM = addBinary(tempA, negM);
+          console.log(" A : " + subAM);
+  
+          Msb = subAM.charAt(0);
+  
+          if (Msb == 0) {
+            // if its positive
+            tempA = subAM;
+            tempAQ = subAM + tempQ + "1";
+          } else {
+            tempAQ = tempAQ + "0";
+          }
+  
+          AQ = tempAQ;
+  
+          passA = AQ.slice(0, M.length);
+          passQ = "";
+  
+          for (let k = passA.length; k < AQ.length; k++) {
+            passQ = passQ + AQ.charAt(k);
+          }
+  
+          console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
+  
+          displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
+          $("#dividend").val(""); //clear input field
+          $("#divisor").val("");
+          clickCtr++;
+          //}
+        } else {
+          document.getElementById("nextBtnID").disabled = true; // if all steps are displayed, disable button
+        }
+      });
+    }
+  });
+  
+
+  $("#download-text-file").click(function () {
+
+     /* START OF RESTORING DIVISION CODE */
+
+     var Q = $("#dividend").val();
+     var M = $("#divisor").val();
+     var A = "0";
+
+      if(Q === "" || M === "") {
+        alert("Please enter all the fields.");
+      } else {
+        if (Q.length >= M.length) {
+          QMlen = Q.length - M.length + 1;
+
+          for (let i = 0; i < QMlen; i++) {
+            M = "0" + M;
+          }
+        }
+
+        for (let i = 0; i < Q.length; i++) {
+          A = A + "0";
+        }
+
+        var AQ = A + Q;
+
+        var negM = findTwoscomplement(M);
+
+        console.log("-M : " + negM);
+        console.log(" A : " + A + "\t" + " Q : " + Q);
+        console.log(" M : " + M + "\n\n");
+
+        var filename= "downloadedresult.txt"; //filename for the text file that will be downloaded
+        var text = "-M : " + negM + "\n";
+        text +=" A : " + A + "\t" + " Q : " + Q + "\n";
+        text +=" M : " + M + "\n\n";
+
+        
+
+        
+        console.log("hellow");
+        /* START LOOP HERE FOR STEP BY STEP */
+        for (let i = 1; i <= Q.length; i++) {
+          tempAQ = leftShifting(AQ, 1);
+          tempAQ = tempAQ.slice(0, -1);
+
+          tempA = tempAQ.slice(0, M.length);
+          tempQ = "";
+
+          for (let j = tempA.length; j < tempAQ.length; j++) {
+            tempQ = tempQ + tempAQ.charAt(j);
+          }
+
+          console.log(
+            " A : " + tempA + "\t" + " Q : " + tempQ + "\t" + "Pass: " + i
+          );
+
+          
+          text += "Pass: " + i + "\n";
+
+          // Append to current text to print in text file later on after the process
+          text+= " A : " + tempA + "\t" + " Q : " + tempQ + "\t" + "\n";
+
+          var dispA = tempA; //for output
+
+          subAM = addBinary(tempA, negM);
+          console.log(" A : " + subAM);
+          text+= " A : " + subAM+ "\n";
+
+          Msb = subAM.charAt(0);
+
+          if (Msb == 0) {
+            // if its positive
+            tempA = subAM;
+            tempAQ = subAM + tempQ + "1";
+          } else {
+            tempAQ = tempAQ + "0";
+          }
+
+          AQ = tempAQ;
+
+          passA = AQ.slice(0, M.length);
+          passQ = "";
+
+          for (let k = passA.length; k < AQ.length; k++) {
+            passQ = passQ + AQ.charAt(k);
+          }
+
+          console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
+          text+= " A : " + passA + "\t" + " Q : " + passQ + "\n" + "\n";
+          displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
+          $("#dividend").val(""); //clear input field
+          $("#divisor").val("");
+        }
+        download(filename, text); // calls the download function computation
+      }
+      
+      
+  });
+
+  //Attribution: 
+  //https://www.codegrepper.com/code-examples/javascript/javascript+create+text+file+and+download
+  function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+  
+    element.style.display = 'none';
+    document.body.appendChild(element);
+  
+    element.click();
+  
+    document.body.removeChild(element);
+  }
 });
