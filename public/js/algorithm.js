@@ -333,9 +333,6 @@ $(document).ready(function () {
         text +=" M : " + M + "\n\n";
 
         
-
-        
-        console.log("hellow");
         /* START LOOP HERE FOR STEP BY STEP */
         for (let i = 1; i <= Q.length; i++) {
           tempAQ = leftShifting(AQ, 1);
