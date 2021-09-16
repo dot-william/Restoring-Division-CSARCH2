@@ -6,9 +6,10 @@ $(document).ready(function () {
   //NOTE: Did not include M and -M (initialization) so we can use for step-by-step in case
   function displayPass(tA, tQ, sAM, pA, pQ, pass) {
     $("#solDiv").append(
-      `<div class=container-fluid>
+      `<div class="container-fluid px-5">
       <label class="label">Pass Number: ${pass}</label>    
-      <div class="p-1" style="background-color:whitesmoke;">   
+      
+      <div style="background-color:whitesmoke;">   
         <div class="columns m-2">
           <div class="column m-0 p-0"> A : ${tA} </div>
           <div class="column m-0 p-0"> Q : ${tQ} </div>
@@ -112,18 +113,25 @@ $(document).ready(function () {
 
       //Append initialization step on solDiv
       $("#solDiv").append(
-        `<div class=container-fluid>
-        <h1>Initialize:</h1>
-        <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
+        `<div class="container-fluid px-5">
+        <label class="label">Initialization</label>   
+         
+        <div style="background-color:whitesmoke;">   
+          <div class="columns m-2">         
+            <div class="column m-0 p-0"> -M: ${negM} </div>
+          </div>
+
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> A : ${A} </div>
+            <div class="column m-0 p-0"> Q : ${Q} </div>
+          </div>
+
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> M : ${M} </div>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
-          <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
-        </div>`
+
+        <div class="mb-5"></div>`
       );
 
       /* START LOOP HERE FOR STEP BY STEP */
@@ -216,22 +224,29 @@ $(document).ready(function () {
   
       //Append initialization step on solDiv
       $("#solDiv").append(
-        `<div class=container-fluid>
-        <h1>Initialize:</h1>
-        <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
+        `<div class="container-fluid px-5">
+        <label class="label">Initialization</label>   
+         
+        <div style="background-color:whitesmoke;">   
+          <div class="columns m-2">         
+            <div class="column m-0 p-0"> -M: ${negM} </div>
+          </div>
+
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> A : ${A} </div>
+            <div class="column m-0 p-0"> Q : ${Q} </div>
+          </div>
+
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> M : ${M} </div>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
-          <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
-        </div>`
+
+        <div class="mb-5"></div>`
       );
   
       var btn = document.createElement("BUTTON");
-      btn.className = `next-button`;
+      btn.className = `button is-link mb-5`;
       btn.id = `nextBtnID`;
       btn.innerHTML = "Next step";
       $("#solDiv").append(btn);
