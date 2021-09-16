@@ -241,11 +241,17 @@ $(document).ready(function () {
         <div class="mb-5"></div>`
       );
 
+      //append div for button
+      $("#solDiv").append(
+        `<div class="has-text-centered" id="btnDiv">
+      </div>`
+      );
+
       var btn = document.createElement("BUTTON");
       btn.className = `button is-link mb-5`;
       btn.id = `nextBtnID`;
       btn.innerHTML = "Next step";
-      $("#solDiv").append(btn);
+      $("#btnDiv").append(btn);
       document.getElementById("nextBtnID").disabled = false;
       var clickCtr = 1;
 
