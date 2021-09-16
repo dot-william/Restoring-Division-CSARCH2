@@ -163,4 +163,119 @@ $(document).ready(function () {
       $("#divisor").val("");
     }
   });
+
+  /*******************    STEP-BY-STEP     *********************/
+  $("#show-step").click(function () {
+    alert("CLICK SUCCESSFUL BUTTON");
+    $("#solDiv").remove(); //clear previous solution
+
+    // Append div containing the solution
+    $("#formCont").append(`<div id="solDiv" class=container-fluid>  
+    </div>`);
+
+    /* START OF RESTORING DIVISION CODE */
+
+    var Q = $("#dividend").val();
+    var M = $("#divisor").val();
+    var A = "0";
+
+    if (Q.length >= M.length) {
+      QMlen = Q.length - M.length + 1;
+
+      for (let i = 0; i < QMlen; i++) {
+        M = "0" + M;
+      }
+    }
+
+    for (let i = 0; i < Q.length; i++) {
+      A = A + "0";
+    }
+
+    var AQ = A + Q;
+
+    var negM = findTwoscomplement(M);
+
+    console.log("-M : " + negM);
+    console.log(" A : " + A + "\t" + " Q : " + Q);
+    console.log(" M : " + M + "\n\n");
+
+    //Append initialization step on solDiv
+    $("#solDiv").append(
+      `<div class=container-fluid>
+      <h1>Initialize:</h1>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> -M: ${negM}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> A : ${A}</div>
+        <div class="col-sm-6" style="background-color:lavender;"> Q : ${Q}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;"> M : ${M}</div>
+      </div>`
+    );
+
+    var btn = document.createElement("BUTTON");
+    btn.className = `next-button`;
+    btn.id = `nextBtnID`;
+    btn.innerHTML = "Next step";
+    $("#solDiv").append(btn);
+    document.getElementById("nextBtnID").disabled = false;
+    var clickCtr = 1;
+
+    $("#nextBtnID").click(function () {
+      /* START LOOP HERE FOR STEP BY STEP */
+      if (clickCtr <= Q.length) {
+        i = clickCtr;
+        //while (i <= Q.length) {
+        tempAQ = leftShifting(AQ, 1);
+        tempAQ = tempAQ.slice(0, -1);
+
+        tempA = tempAQ.slice(0, M.length);
+        tempQ = "";
+
+        for (let j = tempA.length; j < tempAQ.length; j++) {
+          tempQ = tempQ + tempAQ.charAt(j);
+        }
+
+        console.log(
+          " A : " + tempA + "\t" + " Q : " + tempQ + "\t" + "Pass: " + i
+        );
+
+        var dispA = tempA; //for output
+
+        subAM = addBinary(tempA, negM);
+        console.log(" A : " + subAM);
+
+        Msb = subAM.charAt(0);
+
+        if (Msb == 0) {
+          // if its positive
+          tempA = subAM;
+          tempAQ = subAM + tempQ + "1";
+        } else {
+          tempAQ = tempAQ + "0";
+        }
+
+        AQ = tempAQ;
+
+        passA = AQ.slice(0, M.length);
+        passQ = "";
+
+        for (let k = passA.length; k < AQ.length; k++) {
+          passQ = passQ + AQ.charAt(k);
+        }
+
+        console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
+
+        displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
+        $("#dividend").val(""); //clear input field
+        $("#divisor").val("");
+        clickCtr++;
+        //}
+      } else {
+        document.getElementById("nextBtnID").disabled = true; // if all steps are displayed, disable button
+      }
+    });
+  });
 });
