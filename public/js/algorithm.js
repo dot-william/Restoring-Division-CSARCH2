@@ -7,20 +7,26 @@ $(document).ready(function () {
   function displayPass(tA, tQ, sAM, pA, pQ, pass) {
     $("#solDiv").append(
       `<div class=container-fluid>
-      <h1>Pass number: ${pass} </h1> 
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> A: ${tA}</div>
-        <div class="col-sm-6" style="background-color:lavenderblush;"> Q : ${tQ}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavenderblush;"> A : ${sAM}</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6" style="background-color:lavender;"> A : ${pA}</div>
-        <div class="col-sm-6" style="background-color:lavenderblush;"> Q : ${pQ}</div>
-      </div>
+      <label class="label">Pass Number: ${pass}</label>    
+      <div class="p-1" style="background-color:whitesmoke;">   
+        <div class="columns m-2">
+          <div class="column m-0 p-0"> A : ${tA} </div>
+          <div class="column m-0 p-0"> Q : ${tQ} </div>
+        </div>
 
-    </div>`
+        <div class="columns m-2">         
+          <div class="column m-0 p-0"> 
+            <p style="color: red;"> A : ${sAM} </p>
+          </div>
+        </div>
+
+        <div class="columns m-2">
+          <div class="column m-0 p-0"> A : ${pA} </div>
+          <div class="column m-0 p-0"> Q : ${pQ} </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5"></div>`
     );
   }
 
@@ -348,7 +354,7 @@ $(document).ready(function () {
 
           
           text += "Pass: " + i + "\n";
-          
+
           // Append to current text to print in text file later on after the process
           text+= " A : " + tempA + "\t" + " Q : " + tempQ + "\t" + "\n";
 
