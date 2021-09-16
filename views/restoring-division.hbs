@@ -12,12 +12,10 @@
     <link rel="stylesheet" type="text/css" href="/css/customized.css" />
 
     <!-- Javascript Links-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
     <script src="/js/algorithm.js"></script>
 
   </head>
@@ -40,11 +38,11 @@
             <div class="field">
               <label class="label">Dividend (Q)</label>
               <div class="control has-icons-left">
-                <input
-                  id="dividend"
-                  class="input mb-3"
-                  type="text"
-                  onkeypress="return validateNumber(event)"
+                <input 
+                  id="dividend" 
+                  class="input mb-3" 
+                  type="text" 
+                  onkeypress="return validateNumber(event)" 
                   placeholder="Numerator in Binary"
                 />
                 <span class="icon is-small is-left">
@@ -94,15 +92,16 @@
 
       <!-- Footer -->
       <footer class="has-text-centered pt-5 mb-5">
-        <p>Computer Architecture 2</p>
-        <br />
+        <p>Computer Architecture 2</p> <br/>
         <p>Abendaño, Dimaculangan, Polinga, Tendido</p>
       </footer>
 
       <!-- Script -->
       <script>
-        function validateNumber(e) { const pattern = /^[0-1]$/; return
-        pattern.test(e.key ) }
+        function validateNumber(e) {
+            const pattern = /^[0-1]$/;
+            return pattern.test(e.key )
+        }
       </script>
     </div>
 
