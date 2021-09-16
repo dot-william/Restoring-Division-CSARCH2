@@ -245,7 +245,6 @@ $(document).ready(function () {
       /* START LOOP HERE FOR STEP BY STEP */
       if (clickCtr <= Q.length) {
         i = clickCtr;
-        //while (i <= Q.length) {
         tempAQ = leftShifting(AQ, 1);
         tempAQ = tempAQ.slice(0, -1);
 
@@ -287,12 +286,14 @@ $(document).ready(function () {
         console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
 
         displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
-        $("#dividend").val(""); //clear input field
+        $("#dividend").val(""); //clear input fields
         $("#divisor").val("");
         clickCtr++;
-        //}
+        if (clickCtr == Q.length + 1) {
+          document.getElementById("nextBtnID").disabled = true; // disable button after displaying last step
+        }
       } else {
-        document.getElementById("nextBtnID").disabled = true; // if all steps are displayed, disable button
+        document.getElementById("nextBtnID").disabled = true;
       }
     });
   });
