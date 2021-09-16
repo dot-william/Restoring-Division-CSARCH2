@@ -19,10 +19,10 @@ h1.custom-h1:hover {
   font-weight: bold;
 }
 
-a.custom-anchor:hover,
+a.custom-anchor:hover,          
 h1.custom-h1:hover {
-  background-color: white;
-  color: rgb(1, 151, 99);
+  background-color: white;    
+  color: rgb(1, 151, 99);  
 }
 
 .section-title {

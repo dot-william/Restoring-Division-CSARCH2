@@ -344,6 +344,7 @@ a strong {
 }
 a:hover {
   color: #ffffff;
+  text-decoration: none;
 }
 
 code {
@@ -3431,6 +3432,7 @@ a.tag:hover {
   display: block;
   font-size: 1rem;
   font-weight: 700;
+  text-align: left;
 }
 .label:not(:last-child) {
   margin-bottom: 0.5em;
