@@ -53,3 +53,8 @@ h1.custom-h1:hover {
   border-radius: 5px;
   border-width: 1px;
 }
+
+a:focus, a:hover {
+  color: #ffffff;
+  text-decoration: none !important;
+}
