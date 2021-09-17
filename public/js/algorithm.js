@@ -189,6 +189,7 @@ $(document).ready(function () {
 
         console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
         displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
+        // Clear input fields
         $("#dividend").val(""); //clear input field
         $("#divisor").val("");
       }
@@ -245,6 +246,10 @@ $(document).ready(function () {
       console.log("-M : " + negM);
       console.log(" A : " + A + "\t" + " Q : " + Q);
       console.log(" M : " + M + "\n\n");
+
+      // Clear input fields
+      $("#dividend").val(""); //clear input field
+      $("#divisor").val("");
 
       //Append initialization step on solDiv
       $("#solDiv").append(
@@ -322,8 +327,6 @@ $(document).ready(function () {
           console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
 
           displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
-          $("#dividend").val(""); //clear input field
-          $("#divisor").val("");
           clickCtr++;
           if (clickCtr == Q.length + 1) {
             document.getElementById("nextBtnID").disabled = true; // disable button after displaying last pass
@@ -438,6 +441,7 @@ $(document).ready(function () {
         console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
         text += " A : " + passA + "\t" + " Q : " + passQ + "\n" + "\n";
         //displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
+        // Clear input fields
         $("#dividend").val(""); //clear input field
         $("#divisor").val("");
       }
