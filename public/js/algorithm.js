@@ -7,26 +7,26 @@ $(document).ready(function () {
   function displayPass(tA, tQ, sAM, pA, pQ, pass) {
     $("#solDiv").append(
       `<div class="container-fluid px-5">
-      <label class="label">Pass Number: ${pass}</label>    
-      
-      <div class="p-1" style="background-color:whitesmoke;">   
-        <div class="columns m-2">
-          <div class="column m-0 p-0"> A : ${tA} </div>
-          <div class="column m-0 p-0"> Q : ${tQ} </div>
-        </div>
+        <label class="label">Pass Number: ${pass}</label>    
+        
+        <div class="p-1" style="background-color:whitesmoke;">   
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> A : ${tA} </div>
+            <div class="column m-0 p-0"> Q : ${tQ} </div>
+          </div>
 
-        <div class="columns m-2">         
-          <div class="column m-0 p-0"> 
-            <p style="color: red;"> A : ${sAM} </p>
+          <div class="columns m-2">         
+            <div class="column m-0 p-0"> 
+              <p style="color: red;"> A : ${sAM} </p>
+            </div>
+          </div>
+
+          <div class="columns m-2">
+            <div class="column m-0 p-0"> A : ${pA} </div>
+            <div class="column m-0 p-0"> Q : ${pQ} </div>
           </div>
         </div>
-
-        <div class="columns m-2">
-          <div class="column m-0 p-0"> A : ${pA} </div>
-          <div class="column m-0 p-0"> Q : ${pQ} </div>
-        </div>
       </div>
-    </div>
     <div class="mb-5"></div>`
     );
   }
@@ -75,17 +75,31 @@ $(document).ready(function () {
   };
 
   $("#show-all").click(function () {
-    $("#solDiv").remove(); //clear previous solution
-
-    // Append div containing the solution
-    $("#formCont").append(`<div id="solDiv" class=container-fluid>  
-      </div>`);
+    $("#btnDiv").empty(); //remove button
+    $("#solDiv").empty(); //clear previous solution
 
     /* START OF RESTORING DIVISION CODE */
 
     var Q = $("#dividend").val();
     var M = $("#divisor").val();
     var A = "0";
+
+    // Get Minimum Bits
+    for (let i = 0; i < Q.length; i++) {
+      if (Q[i] == 0){
+        Q = Q.substring(1);
+      } else {
+        break;
+      }
+    }
+
+    for (let i = 0; i < M.length; i++) {
+      if (M[i] == 0){
+        M = M.substring(1);
+      } else {
+        break;
+      }
+    }
 
     if (Q === "" || M === "") {
       alert("Please enter all the fields.");
@@ -113,23 +127,23 @@ $(document).ready(function () {
       //Append initialization step on solDiv
       $("#solDiv").append(
         `<div class="container-fluid px-5">
-        <label class="label">Initialization</label>   
-         
-        <div class="p-1" style="background-color:whitesmoke;">   
-          <div class="columns m-2">         
-            <div class="column m-0 p-0"> -M: ${negM} </div>
-          </div>
+          <label class="label">Initialization</label>   
+          
+          <div class="p-1" style="background-color:whitesmoke;">   
+            <div class="columns m-2">         
+              <div class="column m-0 p-0"> -M: ${negM} </div>
+            </div>
 
-          <div class="columns m-2">
-            <div class="column m-0 p-0"> A : ${A} </div>
-            <div class="column m-0 p-0"> Q : ${Q} </div>
-          </div>
+            <div class="columns m-2">
+              <div class="column m-0 p-0"> A : ${A} </div>
+              <div class="column m-0 p-0"> Q : ${Q} </div>
+            </div>
 
-          <div class="columns m-2">
-            <div class="column m-0 p-0"> M : ${M} </div>
+            <div class="columns m-2">
+              <div class="column m-0 p-0"> M : ${M} </div>
+            </div>
           </div>
         </div>
-
         <div class="mb-5"></div>`
       );
 
@@ -182,18 +196,32 @@ $(document).ready(function () {
   });
 
   /*******************    STEP-BY-STEP     *********************/
-  $("#show-step").click(function () {
-    $("#solDiv").remove(); //clear previous solution
-
-    // Append div containing the solution
-    $("#formCont").append(`<div id="solDiv" class=container-fluid>  
-    </div>`);
-
+  $("#show-step").click(function () { 
+    $("#btnDiv").empty(); //remove button
+    $("#solDiv").empty(); //clear previous solution
+          
     /* START OF RESTORING DIVISION CODE */
 
     var Q = $("#dividend").val();
     var M = $("#divisor").val();
     var A = "0";
+
+    // Get Minimum Bits
+    for (let i = 0; i < Q.length; i++) {
+      if (Q[i] == 0){
+        Q = Q.substring(1);
+      } else {
+        break;
+      }
+    }
+
+    for (let i = 0; i < M.length; i++) {
+      if (M[i] == 0){
+        M = M.substring(1);
+      } else {
+        break;
+      }
+    }
 
     if (Q === "" || M === "") {
       alert("Please enter all the fields.");
@@ -221,39 +249,34 @@ $(document).ready(function () {
       //Append initialization step on solDiv
       $("#solDiv").append(
         `<div class="container-fluid px-5">
-        <label class="label">Initialization</label>   
-         
-        <div class="p-1" style="background-color:whitesmoke;">   
-          <div class="columns m-2">         
-            <div class="column m-0 p-0"> -M: ${negM} </div>
-          </div>
+          <label class="label">Initialization</label>   
+          
+          <div class="p-1" style="background-color:whitesmoke;">   
+            <div class="columns m-2">         
+              <div class="column m-0 p-0"> -M: ${negM} </div>
+            </div>
 
-          <div class="columns m-2">
-            <div class="column m-0 p-0"> A : ${A} </div>
-            <div class="column m-0 p-0"> Q : ${Q} </div>
-          </div>
+            <div class="columns m-2">
+              <div class="column m-0 p-0"> A : ${A} </div>
+              <div class="column m-0 p-0"> Q : ${Q} </div>
+            </div>
 
-          <div class="columns m-2">
-            <div class="column m-0 p-0"> M : ${M} </div>
-          </div>
+            <div class="columns m-2">
+              <div class="column m-0 p-0"> M : ${M} </div>
+            </div>
+          </div>         
         </div>
-
         <div class="mb-5"></div>`
       );
 
-      // //append div for button
-      // $("#solDiv").append(
-      //   `<div class="has-text-centered" id="btnDiv">
-      // </div>`
-      // );
-      
       var btn = document.createElement("BUTTON");
       btn.className = `button is-link mb-5`;
       btn.id = `nextBtnID`;
       btn.innerHTML = "Next step";
       $("#btnDiv").append(btn);
-      
-
+      document.getElementById("nextBtnID").disabled = false;
+      var clickCtr = 1;       
+           
       $("#nextBtnID").click(function () {
         /* START LOOP HERE FOR STEP BY STEP */
         if (clickCtr <= Q.length) {
@@ -309,17 +332,34 @@ $(document).ready(function () {
           document.getElementById("nextBtnID").disabled = true;
         }
       });     
-      document.getElementById("nextBtnID").disabled = false;
-      var clickCtr = 1; 
     }
   });
 
   $("#download-text-file").click(function () {
     /* START OF RESTORING DIVISION CODE */
+    $("#btnDiv").empty(); //remove button
+    $("#solDiv").empty(); //clear previous solution
 
     var Q = $("#dividend").val();
     var M = $("#divisor").val();
     var A = "0";
+
+    // Get Minimum Bits
+    for (let i = 0; i < Q.length; i++) {
+      if (Q[i] == 0){
+        Q = Q.substring(1);
+      } else {
+        break;
+      }
+    }
+
+    for (let i = 0; i < M.length; i++) {
+      if (M[i] == 0){
+        M = M.substring(1);
+      } else {
+        break;
+      }
+    }
 
     if (Q === "" || M === "") {
       alert("Please enter all the fields.");
@@ -397,7 +437,7 @@ $(document).ready(function () {
 
         console.log(" A : " + passA + "\t" + " Q : " + passQ + "\n");
         text += " A : " + passA + "\t" + " Q : " + passQ + "\n" + "\n";
-        displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
+        //displayPass(dispA, tempQ, subAM, passA, passQ, i); //for every loop, display pass
         $("#dividend").val(""); //clear input field
         $("#divisor").val("");
       }
