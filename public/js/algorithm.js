@@ -90,7 +90,7 @@ $(document).ready(function () {
     var intValDividend = parseInt(Q);
     var intValDivisor = parseInt(M);
     
-    if (intValDividend == 0 || intValDivisor == 0) {
+    if (intValDivisor == 0) {
       alert("Input is invalid, please try again.");
       $("#dividend").val(""); //clear input field
       $("#divisor").val("");
@@ -208,7 +208,7 @@ $(document).ready(function () {
     var intValDividend = parseInt(Q);
     var intValDivisor = parseInt(M);
 
-    if (intValDividend == 0 || intValDivisor == 0) {
+    if (intValDivisor == 0) {
       alert("Input is invalid, please try again.");
       $("#dividend").val(""); //clear input field
       $("#divisor").val("");
@@ -345,7 +345,7 @@ $(document).ready(function () {
     var intValDividend = parseInt(Q);
     var intValDivisor = parseInt(M);
 
-    if (intValDividend == 0 || intValDivisor == 0) {
+    if (intValDivisor == 0) {
       alert("Input is invalid, please try again.");
       $("#dividend").val(""); //clear input field
       $("#divisor").val("");
