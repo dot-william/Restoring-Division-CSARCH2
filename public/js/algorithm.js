@@ -95,23 +95,7 @@ $(document).ready(function () {
       $("#dividend").val(""); //clear input field
       $("#divisor").val("");
     } else {
-          // Get Minimum Bits
-      for (let i = 0; i < Q.length; i++) {
-        if (Q[i] == 0){
-          Q = Q.substring(1);
-        } else {
-          break;
-        }
-      }
-
-      for (let i = 0; i < M.length; i++) {
-        if (M[i] == 0){
-          M = M.substring(1);
-        } else {
-          break;
-        }
-      }
-
+      
       if (Q === "" || M === "") {
         alert("Please enter all the fields.");
       } else {
@@ -229,23 +213,7 @@ $(document).ready(function () {
       $("#dividend").val(""); //clear input field
       $("#divisor").val("");
     } else{
-      // Get Minimum Bits
-      for (let i = 0; i < Q.length; i++) {
-        if (Q[i] == 0){
-          Q = Q.substring(1);
-        } else {
-          break;
-        }
-      }
-
-      for (let i = 0; i < M.length; i++) {
-        if (M[i] == 0){
-          M = M.substring(1);
-        } else {
-          break;
-        }
-      }
-
+      
       if (Q === "" || M === "") {
         alert("Please enter all the fields.");
       } else {
@@ -382,23 +350,7 @@ $(document).ready(function () {
       $("#dividend").val(""); //clear input field
       $("#divisor").val("");
     } else {
-        // Get Minimum Bits
-      for (let i = 0; i < Q.length; i++) {
-        if (Q[i] == 0){
-          Q = Q.substring(1);
-        } else {
-          break;
-        }
-      }
-
-      for (let i = 0; i < M.length; i++) {
-        if (M[i] == 0){
-          M = M.substring(1);
-        } else {
-          break;
-        }
-      }
-
+      
       if (Q === "" || M === "") {
         alert("Please enter all the fields.");
       } else {
